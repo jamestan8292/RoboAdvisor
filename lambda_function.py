@@ -35,28 +35,22 @@ def validate_data(age, investment_amount, intent_request):
 
     # Validate that the user is more than 0 and less than 65 years old
     if age is not None:
-        age = parse_float(
-            age
-        )  # Since parameters are strings it's important to cast values
+        age = parse_float(age)  # Since parameters are strings it's important to cast values
         if age <= 0 or age >= 65:
             return build_validation_result(
                 False,
                 "age",
-                "Your age should be more than zero and less than 65 years old to use this service, "
-                "please provide a different age.",
+                "Your age should be more than zero and less than 65 years old to use this service, please provide a different age."
             )
 
     # Validate the investment amount, it should be >= 5000
     if investment_amount is not None:
-        investment_amount = parse_float(
-                investment_amount
-            )  # Since parameters are strings it's important to cast values
+        investment_amount = parse_float(investment_amount)  # Since parameters are strings it's important to cast values
         if investment_amount < 5000:
             return build_validation_result(
                 False,
                 "investment_amount",
-                "The investment amount should be equal to or greater than $5,000, "
-                "please provide a correct investment amount.",
+                "The investment amount should be equal to or greater than $5000, please provide a correct investment amount."
             )
 
     # A True results is returned if age or amount are valid
@@ -113,6 +107,7 @@ def close(session_attributes, fulfillment_state, message):
     }
 
     return response
+
 
 ### Intents Handlers ###
 def recommend_portfolio(intent_request):
@@ -201,3 +196,4 @@ def lambda_handler(event, context):
     """
 
     return dispatch(event)
+``
